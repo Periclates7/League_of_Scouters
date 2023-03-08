@@ -119,7 +119,7 @@ def scrapeo(url):
     
     progress_bar = [driver.find_elements(By.CLASS_NAME, 'progressBarTxt')[i].text for i in range(len(driver.find_elements(By.CLASS_NAME, 'progressBarTxt')))]
     
-    driver.quit()
+    
     
     # Número de partidas jugadas de los campeones más jugados por el jugador
     
@@ -162,10 +162,18 @@ def scrapeo(url):
     
     rol = [driver.find_elements(By.CLASS_NAME, 'img-align-block')[i].text for i in range(len(driver.find_elements(By.CLASS_NAME, 'img-align-block')))]
     
+    driver.quit()
+    
     try:
         roles = [e for e in rol if e in ['AD Carry', 'Support', 'Top', 'Mid', 'Jungler']][:3]
     except:
         roles = [e for e in rol if e in ['AD Carry', 'Support', 'Top', 'Mid', 'Jungler']]
+    
+    
+    rol_1 = roles[0]
+    rol_2 = roles[1]
+    rol_3 = roles[2]
+    
     
     # Partidas en cada rol jugado por el jugador
     
@@ -191,9 +199,15 @@ def scrapeo(url):
     
     #KDA jugador
     
-    kills_player_kda = 0#kills[-4]
-    deaths_player_kda = 0#deaths[-4]
-    assists_player_kda = 0#assists[-4]
+    kda_player = [driver.find_elements(By.CLASS_NAME, 'number')[i].text for i in range(len(driver.find_elements(By.CLASS_NAME, 'number')))]
+    
+    if '/' in kda_player[-4]:
+    
+        kills_player_kda = kda_player[-4].split(' / ')[0]
+        deaths_player_kda = kda_player[-4].split(' / ')[1]
+        assists_player_kda = kda_player[-4].split(' / ')[2]
+    else:
+        pass
     
     
     data = {'nombre_invocador':nombre,              # Preparamos nuestros datos scrapeados en un diccionario donde la key
@@ -291,3 +305,22 @@ def scrapeo(url):
             }
     
     return data
+
+
+
+def roles(url):
+    
+    driver=webdriver.Chrome(PATH)               
+    driver.get(url)
+    
+    rol = [driver.find_elements(By.CLASS_NAME, 'img-align-block')[i].text for i in range(len(driver.find_elements(By.CLASS_NAME, 'img-align-block')))]
+    
+    
+    
+    try:
+        roles = [e for e in rol if e in ['AD Carry', 'Support', 'Top', 'Mid', 'Jungler']][:3]
+    except:
+        roles = [e for e in rol if e in ['AD Carry', 'Support', 'Top', 'Mid', 'Jungler']]
+        
+        
+    
