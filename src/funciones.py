@@ -70,59 +70,50 @@ def scrapeo(url):
     regional_rank_8 = regional_rank[7]
     
     
-    kills = [driver.find_elements(By.CLASS_NAME, 'kills')[i].text for i in range(len(driver.find_elements(By.CLASS_NAME, 'kills')))]
+    # KDA de los campeones más jugados por el jugador
     
-    # Asesinatos de los campeones más jugados por el jugador
+    kda = [driver.find_elements(By.CLASS_NAME, 'kda')[i].text for i in range(len(driver.find_elements(By.CLASS_NAME, 'kda')))]
     
-    if kills[24] == '':
-        kills_champs = kills[16:24]
-    elif kills[25] == '':
-        kills_champs = kills[17:25]
-    else:
-        kills_champs = kills[29:37]
-    
-    kills_champ_1 = kills_champs[0]
-    kills_champ_2 = kills_champs[1]
-    kills_champ_3 = kills_champs[2]
-    kills_champ_4 = kills_champs[3]
-    kills_champ_5 = kills_champs[4]
-    kills_champ_6 = kills_champs[5]
-    kills_champ_7 = kills_champs[6]
-    kills_champ_8 = kills_champs[7]
-    
-    
-    
-    deaths = [driver.find_elements(By.CLASS_NAME, 'deaths')[i].text for i in range(len(driver.find_elements(By.CLASS_NAME, 'deaths')))]
+    count = 0
+    i = len(kda) - 1
+    while count < 8 and i >= 0:
+        if kda[i] != '':
+            count += 1
+        i -= 1
 
-    # Muertes de los campeones más jugados por el jugador
-    
-    deaths_champs = deaths[29:37]
-    
-    deaths_champ_1 = deaths_champs[0]
-    deaths_champ_2 = deaths_champs[1]
-    deaths_champ_3 = deaths_champs[2]
-    deaths_champ_4 = deaths_champs[3]
-    deaths_champ_5 = deaths_champs[4]
-    deaths_champ_6 = deaths_champs[5]
-    deaths_champ_7 = deaths_champs[6]
-    deaths_champ_8 = deaths_champs[7]
+    if count == 8:
+        result = kda[i+1:]
+        result = result[:8]
     
     
+    kda = [e.split(' / ') for e in result]
     
-    assists = [driver.find_elements(By.CLASS_NAME, 'assists')[i].text for i in range(len(driver.find_elements(By.CLASS_NAME, 'assists')))]
+    kills_champ_1 = kda[0][0]
+    kills_champ_2 = kda[1][0]
+    kills_champ_3 = kda[2][0]
+    kills_champ_4 = kda[3][0]
+    kills_champ_5 = kda[4][0]
+    kills_champ_6 = kda[5][0]
+    kills_champ_7 = kda[6][0]
+    kills_champ_8 = kda[7][0]
     
-    # Asistencias de los campeones más jugados por el jugador
+    deaths_champ_1 = kda[0][1]
+    deaths_champ_2 = kda[1][1]
+    deaths_champ_3 = kda[2][1]
+    deaths_champ_4 = kda[3][1]
+    deaths_champ_5 = kda[4][1]
+    deaths_champ_6 = kda[5][1]
+    deaths_champ_7 = kda[6][1]
+    deaths_champ_8 = kda[7][1]
     
-    assists_champs = assists[29:37]
-    
-    assists_champ_1 = assists_champs[0]
-    assists_champ_2 = assists_champs[1]
-    assists_champ_3 = assists_champs[2]
-    assists_champ_4 = assists_champs[3]
-    assists_champ_5 = assists_champs[4]
-    assists_champ_6 = assists_champs[5]
-    assists_champ_7 = assists_champs[6]
-    assists_champ_8 = assists_champs[7]
+    assists_champ_1 = kda[0][2]
+    assists_champ_2 = kda[1][2]
+    assists_champ_3 = kda[2][2]
+    assists_champ_4 = kda[3][2]
+    assists_champ_5 = kda[4][2]
+    assists_champ_6 = kda[5][2]
+    assists_champ_7 = kda[6][2]
+    assists_champ_8 = kda[7][2]
     
     
     
@@ -169,12 +160,12 @@ def scrapeo(url):
     
     # Roles + jugados por el jugador
     
-    roles = champs_name[-9:-6]
+    rol = [driver.find_elements(By.CLASS_NAME, 'img-align-block')[i].text for i in range(len(driver.find_elements(By.CLASS_NAME, 'img-align-block')))]
     
-    rol_1 = roles[0]
-    rol_2 = roles[1]
-    rol_3 = roles[2]
-    
+    try:
+        roles = [e for e in rol if e in ['AD Carry', 'Support', 'Top', 'Mid', 'Jungler']][:3]
+    except:
+        roles = [e for e in rol if e in ['AD Carry', 'Support', 'Top', 'Mid', 'Jungler']]
     
     # Partidas en cada rol jugado por el jugador
     
@@ -200,9 +191,9 @@ def scrapeo(url):
     
     #KDA jugador
     
-    kills_player_kda = kills[-4]
-    deaths_player_kda = deaths[-4]
-    assists_player_kda = assists[-4]
+    kills_player_kda = 0#kills[-4]
+    deaths_player_kda = 0#deaths[-4]
+    assists_player_kda = 0#assists[-4]
     
     
     data = {'nombre_invocador':nombre,              # Preparamos nuestros datos scrapeados en un diccionario donde la key
