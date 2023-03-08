@@ -36,9 +36,16 @@ def scrapeo(url):
     rank_per = driver.find_element(By.CLASS_NAME, 'topRankPercentage').text      # Rank del jugador en porcentaje
     wins = driver.find_element(By.CLASS_NAME, 'winsNumber').text                 # Nº de victorias
     loses = driver.find_element(By.CLASS_NAME, 'lossesNumber').text              # Nº de derrotas
-    n_games = driver.find_element(By.ID, 'graphDD2').text                        # Nº de partidas en la Season
-    winrate_total = driver.find_element(By.ID, 'graphDD3').text         
-    winrate_total = winrate_total[:-1]                                           # Winrate total del jugador
+                            
+    
+    winrate_total = driver.find_element(By.ID, 'graphDD3').text                  # Winrate total del jugador
+    
+    if '%' in winrate_total:
+        winrate_total = driver.find_element(By.ID, 'graphDD3').text[:-1]         # Nº de partidas en la Season
+        n_games = driver.find_element(By.ID, 'graphDD2').text
+    else:
+        n_games = driver.find_element(By.ID, 'graphDD3').text
+        winrate_total = driver.find_element(By.ID, 'graphDD4').text[:-1]                                                                     
     
     
     champs_name = [driver.find_elements(By.CLASS_NAME, 'name')[i].text for i in range(len(driver.find_elements(By.CLASS_NAME,       'name')))]
