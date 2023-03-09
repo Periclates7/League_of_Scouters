@@ -19,50 +19,67 @@ def scrapeo_rol_kda(url):
     driver=webdriver.Chrome(PATH)               
     driver.get(url)
     
-    progress_bar = [driver.find_elements(By.CLASS_NAME, 'progressBarTxt')[i].text for i in range(len(driver.find_elements(By.CLASS_NAME, 'progressBarTxt')))]
     
-    rol = [driver.find_elements(By.CLASS_NAME, 'img-align-block')[i].text for i in range(len(driver.find_elements(By.CLASS_NAME, 'img-align-block')))]
+    tabla = driver.find_elements(By.TAG_NAME, 'tbody')[7]
+    filas = tabla.find_elements(By.TAG_NAME, 'tr')
+    roles = []
+
+    for f in filas:
+        elems=f.find_elements(By.TAG_NAME, 'td')
+
+        tmp=[]
+
+        for e in elems:
+            tmp.append(e.text)
+
+        roles.append(tmp)
     
     
+    if len(roles) >= 4:
+        rol_1 = roles[1][0]
+        rol_2 = roles[2][0]
+        rol_3 = roles[3][0]
     
-    try:
-        roles = [e for e in rol if e in ['AD Carry', 'Support', 'Top', 'Mid', 'Jungler']][:3]
-    except:
-        roles = [e for e in rol if e in ['AD Carry', 'Support', 'Top', 'Mid', 'Jungler']]
+        games_per_rol_1 = roles[1][1]
+        games_per_rol_2 = roles[2][1]
+        games_per_rol_3 = roles[3][1]
     
-    if len(roles) == 3:
-        rol_1 = roles[0]
-        rol_2 = roles[1]
-        rol_3 = roles[2]
+        winrate_per_rol_1 = roles[1][2][:-1]
+        winrate_per_rol_2 = roles[2][2][:-1]
+        winrate_per_rol_3 = roles[3][2][:-1]
+    
+    elif len(roles) == 3:
+        rol_1 = roles[1][0]
+        rol_2 = roles[2][0]
+    
+        games_per_rol_1 = roles[1][1]
+        games_per_rol_2 = roles[2][1]
+    
+        winrate_per_rol_1 = roles[1][2][:-1]
+        winrate_per_rol_2 = roles[2][2][:-1]
+    
     elif len(roles) == 2:
-        rol_1 = roles[0]
-        rol_2 = roles[1]
-    elif len(roles) == 1:
-        rol_1 = roles[0]
+        rol_1 = roles[1][0]
+    
+        games_per_rol_1 = roles[1][1]
+        
+        winrate_per_rol_1 = roles[1][2][:-1]
+    else:
+        pass
     
     
     # Partidas en cada rol jugado por el jugador
     
-    games_per_rol = progress_bar[-6::2]
     
-    games_per_rol_1 = games_per_rol[0]
-    games_per_rol_2 = games_per_rol[1]
-    games_per_rol_3 = games_per_rol[2]
+    
     
     
     # Winrate para cada rol jugado por el jugador
     
-    winrate_per_rol = progress_bar[-5::2]
-    
-    winrate_per_rol_1 = winrate_per_rol[0]
-    winrate_per_rol_2 = winrate_per_rol[1]
-    winrate_per_rol_3 = winrate_per_rol[2]
-    
-    winrate_per_rol_1 = winrate_per_rol_1[:-1]                 # Quitamos '%' 
-    winrate_per_rol_2 = winrate_per_rol_2[:-1]
-    winrate_per_rol_3 = winrate_per_rol_3[:-1]
     
     
+
+
     #KDA jugador
     
     kda_player = [driver.find_elements(By.CLASS_NAME, 'number')[i].text for i in range(len(driver.find_elements(By.CLASS_NAME, 'number')))]
@@ -79,7 +96,7 @@ def scrapeo_rol_kda(url):
     
     
     
-    if len(roles) == 3:
+    if len(roles) >= 4:
     
         data = {
                 'kills_player_kda':kills_player_kda,
@@ -99,7 +116,7 @@ def scrapeo_rol_kda(url):
                 'winrate_per_rol_3':winrate_per_rol_3,
 
                 }
-    elif len(roles) == 2:
+    elif len(roles) == 3:
         data = {
                 'kills_player_kda':kills_player_kda,
                 'deaths_player_kda':deaths_player_kda,
@@ -115,7 +132,7 @@ def scrapeo_rol_kda(url):
 
                 
                 }
-    elif len(roles) == 1:
+    elif len(roles) == 2:
         data = {
                 'kills_player_kda':kills_player_kda,
                 'deaths_player_kda':deaths_player_kda,
