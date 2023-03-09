@@ -11,136 +11,143 @@ import requests
 from bs4 import BeautifulSoup
 
 
-
+from pymongo import MongoClient
+cursor=MongoClient()
+final_proj = cursor.lol_scouting                                                   # Nueva base de datos
+colec = final_proj.rol_kda
 
 
 def scrapeo_rol_kda(url):
     
-    driver=webdriver.Chrome(PATH)               
-    driver.get(url)
-    
-    
-    tabla = driver.find_elements(By.TAG_NAME, 'tbody')[7]
-    filas = tabla.find_elements(By.TAG_NAME, 'tr')
-    roles = []
-
-    for f in filas:
-        elems=f.find_elements(By.TAG_NAME, 'td')
-
-        tmp=[]
-
-        for e in elems:
-            tmp.append(e.text)
-
-        roles.append(tmp)
-    
-    
-    if len(roles) >= 4:
-        rol_1 = roles[1][0]
-        rol_2 = roles[2][0]
-        rol_3 = roles[3][0]
-    
-        games_per_rol_1 = roles[1][1]
-        games_per_rol_2 = roles[2][1]
-        games_per_rol_3 = roles[3][1]
-    
-        winrate_per_rol_1 = roles[1][2][:-1]
-        winrate_per_rol_2 = roles[2][2][:-1]
-        winrate_per_rol_3 = roles[3][2][:-1]
-    
-    elif len(roles) == 3:
-        rol_1 = roles[1][0]
-        rol_2 = roles[2][0]
-    
-        games_per_rol_1 = roles[1][1]
-        games_per_rol_2 = roles[2][1]
-    
-        winrate_per_rol_1 = roles[1][2][:-1]
-        winrate_per_rol_2 = roles[2][2][:-1]
-    
-    elif len(roles) == 2:
-        rol_1 = roles[1][0]
-    
-        games_per_rol_1 = roles[1][1]
-        
-        winrate_per_rol_1 = roles[1][2][:-1]
-    else:
-        pass
-    
-    
-    # Partidas en cada rol jugado por el jugador
-    
-    
-    
-    
-    
-    # Winrate para cada rol jugado por el jugador
-    
-    
-    
+    try:
+        driver=webdriver.Chrome(PATH)               
+        driver.get(url)
 
 
-    #KDA jugador
-    
-    kda_player = [driver.find_elements(By.CLASS_NAME, 'number')[i].text for i in range(len(driver.find_elements(By.CLASS_NAME, 'number')))]
-    
-    driver.quit()
-    
-    if '/' in kda_player[-4]:
-    
-        kills_player_kda = kda_player[-4].split(' / ')[0]
-        deaths_player_kda = kda_player[-4].split(' / ')[1]
-        assists_player_kda = kda_player[-4].split(' / ')[2]
-    else:
-        pass
-    
-    
-    
-    if len(roles) >= 4:
-    
-        data = {
-                'kills_player_kda':kills_player_kda,
-                'deaths_player_kda':deaths_player_kda,
-                'assists_player_kda':assists_player_kda,
+        tabla = driver.find_elements(By.TAG_NAME, 'tbody')[7]
+        filas = tabla.find_elements(By.TAG_NAME, 'tr')
+        roles = []
 
-                'rol_1':rol_1,
-                'games_per_rol_1':games_per_rol_1,
-                'winrate_per_rol_1':winrate_per_rol_1,
+        for f in filas:
+            elems=f.find_elements(By.TAG_NAME, 'td')
 
-                'rol_2':rol_2,
-                'games_per_rol_2':games_per_rol_2,
-                'winrate_per_rol_2':winrate_per_rol_2,
+            tmp=[]
 
-                'rol_3':rol_3,
-                'games_per_rol_3':games_per_rol_3,
-                'winrate_per_rol_3':winrate_per_rol_3,
+            for e in elems:
+                tmp.append(e.text)
 
-                }
-    elif len(roles) == 3:
-        data = {
-                'kills_player_kda':kills_player_kda,
-                'deaths_player_kda':deaths_player_kda,
-                'assists_player_kda':assists_player_kda,
+            roles.append(tmp)
 
-                'rol_1':rol_1,
-                'games_per_rol_1':games_per_rol_1,
-                'winrate_per_rol_1':winrate_per_rol_1,
 
-                'rol_2':rol_2,
-                'games_per_rol_2':games_per_rol_2,
-                'winrate_per_rol_2':winrate_per_rol_2
+        if len(roles) >= 4:
+            rol_1 = roles[1][0]
+            rol_2 = roles[2][0]
+            rol_3 = roles[3][0]
 
-                
-                }
-    elif len(roles) == 2:
-        data = {
-                'kills_player_kda':kills_player_kda,
-                'deaths_player_kda':deaths_player_kda,
-                'assists_player_kda':assists_player_kda,
+            games_per_rol_1 = roles[1][1]
+            games_per_rol_2 = roles[2][1]
+            games_per_rol_3 = roles[3][1]
 
-                'rol_1':rol_1,
-                'games_per_rol_1':games_per_rol_1,
-                'winrate_per_rol_1':winrate_per_rol_1
-                 }
+            winrate_per_rol_1 = roles[1][2][:-1]
+            winrate_per_rol_2 = roles[2][2][:-1]
+            winrate_per_rol_3 = roles[3][2][:-1]
+
+        elif len(roles) == 3:
+            rol_1 = roles[1][0]
+            rol_2 = roles[2][0]
+
+            games_per_rol_1 = roles[1][1]
+            games_per_rol_2 = roles[2][1]
+
+            winrate_per_rol_1 = roles[1][2][:-1]
+            winrate_per_rol_2 = roles[2][2][:-1]
+
+        elif len(roles) == 2:
+            rol_1 = roles[1][0]
+
+            games_per_rol_1 = roles[1][1]
+
+            winrate_per_rol_1 = roles[1][2][:-1]
+        else:
+            pass
+
+
+        # Partidas en cada rol jugado por el jugador
+
+
+
+
+
+        # Winrate para cada rol jugado por el jugador
+
+
+
+
+
+        #KDA jugador
+
+        kda_player = [driver.find_elements(By.CLASS_NAME, 'number')[i].text for i in range(len(driver.find_elements(By.CLASS_NAME, 'number')))]
+
+        driver.quit()
+
+        if '/' in kda_player[-4]:
+
+            kills_player_kda = kda_player[-4].split(' / ')[0]
+            deaths_player_kda = kda_player[-4].split(' / ')[1]
+            assists_player_kda = kda_player[-4].split(' / ')[2]
+        else:
+            pass
+
+
+
+        if len(roles) >= 4:
+
+            data = {
+                    'kills_player_kda':kills_player_kda,
+                    'deaths_player_kda':deaths_player_kda,
+                    'assists_player_kda':assists_player_kda,
+
+                    'rol_1':rol_1,
+                    'games_per_rol_1':games_per_rol_1,
+                    'winrate_per_rol_1':winrate_per_rol_1,
+
+                    'rol_2':rol_2,
+                    'games_per_rol_2':games_per_rol_2,
+                    'winrate_per_rol_2':winrate_per_rol_2,
+
+                    'rol_3':rol_3,
+                    'games_per_rol_3':games_per_rol_3,
+                    'winrate_per_rol_3':winrate_per_rol_3,
+
+                    }
+        elif len(roles) == 3:
+            data = {
+                    'kills_player_kda':kills_player_kda,
+                    'deaths_player_kda':deaths_player_kda,
+                    'assists_player_kda':assists_player_kda,
+
+                    'rol_1':rol_1,
+                    'games_per_rol_1':games_per_rol_1,
+                    'winrate_per_rol_1':winrate_per_rol_1,
+
+                    'rol_2':rol_2,
+                    'games_per_rol_2':games_per_rol_2,
+                    'winrate_per_rol_2':winrate_per_rol_2
+
+
+                    }
+        elif len(roles) == 2:
+            data = {
+                    'kills_player_kda':kills_player_kda,
+                    'deaths_player_kda':deaths_player_kda,
+                    'assists_player_kda':assists_player_kda,
+
+                    'rol_1':rol_1,
+                    'games_per_rol_1':games_per_rol_1,
+                    'winrate_per_rol_1':winrate_per_rol_1
+                     }
     
-    return data
+    
+        colec.insert_one(data)
+    except:
+        return None
