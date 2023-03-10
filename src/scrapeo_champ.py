@@ -16,12 +16,15 @@ final_proj = cursor.lol_scouting                                                
 colec = final_proj.champs
 
 
-def scrapeo_champs(url):
+def scrapeo_champ(url):
     
     try:
         driver=webdriver.Chrome(PATH)               
         driver.get(url)
-
+        
+        name_reg= driver.find_element(By.TAG_NAME, 'h2').text 
+        nombre = name_reg.split('(')[0][:-1]
+        
         champs_name = [driver.find_elements(By.CLASS_NAME, 'name')[i].text for i in range(len(driver.find_elements(By.CLASS_NAME,       'name')))]
 
         # Nombre de los campeones más jugados por el jugador
@@ -140,6 +143,7 @@ def scrapeo_champs(url):
 
 
         data = {
+                'nombre':nombre,
                 'champ_1':champ_1,
                 'regional_rank_1':regional_rank_1,
                 'kills_champ_1':kills_champ_1,
@@ -205,7 +209,7 @@ def scrapeo_champs(url):
                 'winrate_champ_8':winrate_champ_8,
                 }
     
-    colec.insert_one(data)
+        colec.insert_one(data)
     
     except:
         return None

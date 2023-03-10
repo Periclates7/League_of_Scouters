@@ -22,8 +22,10 @@ def scrapeo_rol_kda(url):
     try:
         driver=webdriver.Chrome(PATH)               
         driver.get(url)
+        
 
-
+        name_reg= driver.find_element(By.TAG_NAME, 'h2').text 
+        nombre = name_reg.split('(')[0][:-1]
         tabla = driver.find_elements(By.TAG_NAME, 'tbody')[7]
         filas = tabla.find_elements(By.TAG_NAME, 'tr')
         roles = []
@@ -138,6 +140,7 @@ def scrapeo_rol_kda(url):
                     }
         elif len(roles) == 2:
             data = {
+                    'nombre':nombre,
                     'kills_player_kda':kills_player_kda,
                     'deaths_player_kda':deaths_player_kda,
                     'assists_player_kda':assists_player_kda,
