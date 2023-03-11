@@ -74,19 +74,7 @@ def scrapeo_rol_kda(url):
             pass
 
 
-        # Partidas en cada rol jugado por el jugador
 
-
-
-
-
-        # Winrate para cada rol jugado por el jugador
-
-
-
-
-
-        #KDA jugador
 
         kda_player = [driver.find_elements(By.CLASS_NAME, 'number')[i].text for i in range(len(driver.find_elements(By.CLASS_NAME, 'number')))]
 
@@ -105,6 +93,7 @@ def scrapeo_rol_kda(url):
         if len(roles) >= 4:
 
             data = {
+                    'nombre_invocador':nombre,
                     'kills_player_kda':kills_player_kda,
                     'deaths_player_kda':deaths_player_kda,
                     'assists_player_kda':assists_player_kda,
@@ -124,6 +113,7 @@ def scrapeo_rol_kda(url):
                     }
         elif len(roles) == 3:
             data = {
+                    'nombre invocador':nombre,
                     'kills_player_kda':kills_player_kda,
                     'deaths_player_kda':deaths_player_kda,
                     'assists_player_kda':assists_player_kda,
@@ -140,7 +130,7 @@ def scrapeo_rol_kda(url):
                     }
         elif len(roles) == 2:
             data = {
-                    'nombre':nombre,
+                    'nombre_invocador':nombre,
                     'kills_player_kda':kills_player_kda,
                     'deaths_player_kda':deaths_player_kda,
                     'assists_player_kda':assists_player_kda,
