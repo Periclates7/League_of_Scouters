@@ -15,14 +15,14 @@ cursor=MongoClient()
 final_proj = cursor.lol_scouting                                                   # Nueva base de datos
 colec = final_proj.profesional_player                                              # Nueva coleccion
 
-def scrapeo_player(url):
+def scrapeo_player_prof(url):
     try:
         driver=webdriver.Chrome(PATH)               
         driver.get(url)
 
-        equipo_rol= [driver.find_elements(By.CLASS_NAME, 'txt')[i].text for i in range(len(driver.find_elements(By.CLASS_NAME, 'txt')))]
-        equipo_rol = equipo_rol.split(' - ')
-        equipo = equipo_rol[0]
+        #equipo_rol= [driver.find_elements(By.CLASS_NAME, 'txt')[i].text for i in range(len(driver.find_elements(By.CLASS_NAME, 'txt')))]
+        #equipo_rol = equipo_rol.split(' - ')
+        #equipo = equipo_rol[0]
         name_reg= driver.find_element(By.TAG_NAME, 'h2').text                        # Nombre de invocador
         nombre = name_reg.split('(')[0][:-1]
         try:

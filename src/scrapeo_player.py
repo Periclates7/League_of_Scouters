@@ -13,7 +13,7 @@ from bs4 import BeautifulSoup
 from pymongo import MongoClient
 cursor=MongoClient()
 final_proj = cursor.lol_scouting                                                   # Nueva base de datos
-colec = final_proj.lol_scouting                                                    # Nueva coleccion
+colec = final_proj.player_prof                                                    # Nueva coleccion
 
 def scrapeo_player(url):
     try:

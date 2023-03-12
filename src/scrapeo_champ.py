@@ -13,7 +13,7 @@ from bs4 import BeautifulSoup
 from pymongo import MongoClient
 cursor=MongoClient()
 final_proj = cursor.lol_scouting                                                   # Nueva base de datos
-colec = final_proj.champs
+colec = final_proj.champs_prof
 
 
 def scrapeo_champ(url):
@@ -24,6 +24,10 @@ def scrapeo_champ(url):
         
         name_reg= driver.find_element(By.TAG_NAME, 'h2').text 
         nombre = name_reg.split('(')[0][:-1]
+        
+        #equipo_rol= [driver.find_elements(By.CLASS_NAME, 'txt')[i].text for i in range(len(driver.find_elements(By.CLASS_NAME, 'txt')))]
+        #equipo_rol = equipo_rol.split(' - ')
+        #equipo = equipo_rol[0]
         
         champs_name = [driver.find_elements(By.CLASS_NAME, 'name')[i].text for i in range(len(driver.find_elements(By.CLASS_NAME,       'name')))]
 
@@ -144,6 +148,8 @@ def scrapeo_champ(url):
 
         data = {
                 'nombre':nombre,
+                #'equipo':equipo,
+                
                 'champ_1':champ_1,
                 'regional_rank_1':regional_rank_1,
                 'kills_champ_1':kills_champ_1,

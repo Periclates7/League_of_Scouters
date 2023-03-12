@@ -13,18 +13,18 @@ from bs4 import BeautifulSoup
 from pymongo import MongoClient
 cursor=MongoClient()
 final_proj = cursor.lol_scouting                                                   # Nueva base de datos
-colec = final_proj.champs_profesional
+colec = final_proj.champs_prof
 
 
 def scrapeo_champ(url):
-    
     try:
+
         driver=webdriver.Chrome(PATH)               
         driver.get(url)
-        
-        name_reg= driver.find_element(By.TAG_NAME, 'h2').text 
+
+        name_reg= driver.find_element(By.TAG_NAME, 'h2').text
         nombre = name_reg.split('(')[0][:-1]
-        
+
         champs_name = [driver.find_elements(By.CLASS_NAME, 'name')[i].text for i in range(len(driver.find_elements(By.CLASS_NAME,       'name')))]
 
         # Nombre de los campeones más jugados por el jugador
@@ -208,8 +208,8 @@ def scrapeo_champ(url):
                 'games_champ_8':games_champ_8,
                 'winrate_champ_8':winrate_champ_8,
                 }
-    
+
         colec.insert_one(data)
-    
     except:
+
         return None
