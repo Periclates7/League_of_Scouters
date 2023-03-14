@@ -17,6 +17,9 @@ final_proj = cursor.lol_scouting                                                
 colec = final_proj.rol_kda_profesional
 
 
+# Tanto este archivo como el resto de archivos .py, se basan en el archivo 'funciones.py'. El proceso que siguen es el mismo con la única excepción de que cada vez que se ejecutan las diferentes funciones, los datos serán cargados en una base de datos de MongoDB. Con la inclusión de la carga en base de datos no perderemos la información ya recogida en caso de que el código o la página web donde se está scrapeando dejen de funcionar.
+
+
 def scrapeo_rol_kda(url):
     
     try:

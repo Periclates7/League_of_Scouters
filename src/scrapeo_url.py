@@ -12,7 +12,7 @@ from bs4 import BeautifulSoup
 
 
 def scrapeo_links():
-    pags = [f'https://www.leagueofgraphs.com/es/rankings/summoners/page-{i}' for i in range(1, 11)]
+    pags = [f'https://www.leagueofgraphs.com/es/rankings/summoners/page-{i}' for i in range(1, 11)]  # Navegamos por el                                                                                                                índice   
     links_total = []
     for url in pags:
         
@@ -23,6 +23,6 @@ def scrapeo_links():
         
         driver.quit()
         
-        links = links_invo[302:-23]
+        links = links_invo[302:-23]                                                                # Filtramos y me quedo con                                                                                                       los url que me interesan
         links_total.append(links)
         return links_total
