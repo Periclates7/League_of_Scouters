@@ -36,9 +36,7 @@ selected_dataframe = rol.selectbox("Selecciona un rol", ['Top', 'Jungle', 'Mid',
 
 # Mostramos el dataframe correspondiente al rol seleccionado
 if selected_dataframe == "Top":
-    #st.caption('# Best Top Players')
-    #st.dataframe(top_stats)
-
+   
     # Filtro para mostrar datos de estadísticas o campeones
     selected_filtro = filtro.selectbox("Selecciona qué datos mostrar", ['Stats', 'Champions'])
 
@@ -51,9 +49,7 @@ if selected_dataframe == "Top":
         st.dataframe(top_champ)
 
 elif selected_dataframe == "Jungle":
-    #st.caption('# Best Jungler Players')
-    #st.dataframe(jun_stats)
-
+    
     # Filtro para mostrar datos de estadísticas o campeones
     selected_filtro = filtro.selectbox("Selecciona qué datos mostrar", ['Stats', 'Champions'])
 
@@ -66,9 +62,7 @@ elif selected_dataframe == "Jungle":
         st.dataframe(jun_champ)
 
 elif selected_dataframe == "Mid":
-    #st.caption('# Best Mid Players')
-    #st.dataframe(mid_stats)
-
+   
     # Filtro para mostrar datos de estadísticas o campeones
     selected_filtro = filtro.selectbox("Selecciona qué datos mostrar", ['Stats', 'Champions'])
     
@@ -80,9 +74,7 @@ elif selected_dataframe == "Mid":
         st.dataframe(jun_champ)
         
 elif selected_dataframe == "AD Carry":
-    #st.caption('# Best ADC Players')
-    #st.dataframe(adc_stats)
-
+   
     # Filtro para mostrar datos de estadísticas o campeones
     selected_filtro = filtro.selectbox("Selecciona qué datos mostrar", ['Stats', 'Champions'])
     
@@ -94,8 +86,6 @@ elif selected_dataframe == "AD Carry":
         st.dataframe(adc_champ)
         
 elif selected_dataframe == "Support":
-    #st.caption('# Best Support Players')
-    #st.dataframe(supp_stats)
 
     # Filtro para mostrar datos de estadísticas o campeones
     selected_filtro = filtro.selectbox("Selecciona qué datos mostrar", ['Stats', 'Champions'])
