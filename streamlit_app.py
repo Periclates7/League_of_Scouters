@@ -5,6 +5,8 @@ from PIL import Image
 import webbrowser
 import urllib.request
 
+st.image("img/cabecera_app.png", use_column_width=True)
+
 st.title('FINAL PROJECT')
 st.header('SCOUTING FOR LEAGUE OF LEGENDS')
 
