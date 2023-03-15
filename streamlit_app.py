@@ -28,6 +28,12 @@ supp_champ = pd.read_csv('data/cuadro_mando/supp_champ_app.csv')
 dataframes_base = ['Top', 'Jungle', 'Mid', 'AD Carry', 'Support']
 dataframes_filtro = ['Stats', 'Champions']
 
+
+filtro_grafico = st.sidebar.selectbox('Selecciona una opción para visualizar', ['Selecciona un valor','Top', 'Jungle', 'Mid', 'AD Carry', 'Support'])
+
+
+
+
 # Creamos los filtros
 rol, filtro = st.columns(2)
 
@@ -68,10 +74,10 @@ elif selected_dataframe == "Mid":
     
     if selected_filtro == 'Stats':
         st.caption('# Best Mid Players Stats')
-        st.dataframe(jun_stats)
+        st.dataframe(mid_stats)
     else:
         st.caption('# Best Mid Champions')
-        st.dataframe(jun_champ)
+        st.dataframe(mid_champ)
         
 elif selected_dataframe == "AD Carry":
    
@@ -98,8 +104,26 @@ elif selected_dataframe == "Support":
         st.dataframe(supp_champ)
         
         
-        
-        
+# Si la opción seleccionada es "TOP", muestra una imagen
+if filtro_grafico == 'Top':
+    imagen = Image.open('img/grafico_top.png')
+    st.image(imagen, caption='Imagen Top', use_column_width=True)        
+
+elif filtro_grafico == 'Jungle':
+    imagen = Image.open('img/grafico_jun.png')
+    st.image(imagen, caption='Imagen Jun', use_column_width=True)
+
+elif filtro_grafico == 'Mid':
+    imagen = Image.open('img/grafico_mid.png')
+    st.image(imagen, caption='Imagen Mid', use_column_width=True)
+
+elif filtro_grafico == 'AD Carry':
+    imagen = Image.open('img/grafico_adc.png')
+    st.image(imagen, caption='Imagen ADC', use_column_width=True)
+
+elif filtro_grafico == 'Support':
+    imagen = Image.open('img/grafico_supp.png')
+    st.image(imagen, caption='Imagen Supp', use_column_width=True)
         
         
         
