@@ -38,6 +38,7 @@ Uno de los objetivos del presente proyecto es que las conclusiones halladas fuer
 
 La aplicación se puede desplegar ubicándose en la carpeta principal del presente repositorio y ejecutando en terminal el siguiente código:
   
-```streamlit run League_of_scouters.py
-
+```
+streamlit run League_of_scouters.py
+```
 
