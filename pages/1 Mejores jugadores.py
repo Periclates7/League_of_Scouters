@@ -7,7 +7,9 @@ import urllib.request
 
 
 
-st.subheader('Ranking de jugadores por rol')
+st.image("img/banner.png", use_column_width=True)
+
+st.header('Ranking de jugadores por rol')
 
 top_stats = pd.read_csv('data/visualizacion/top_ss.csv')
 jun_stats = pd.read_csv('data/visualizacion/jun_ss.csv')

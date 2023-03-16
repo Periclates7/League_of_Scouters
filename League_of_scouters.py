@@ -9,6 +9,15 @@ st.image("img/banner.png", use_column_width=True)
 
 st.title('LEAGUE OF SCOUTERS')
 st.header('¿Qué es League of Scouters?')
+st.write('##### League of Scouters es una plataforma diseñada para ayudar a los equipos profesionales de League of Legends a encontrar jugadores con potencial para fichar. La plataforma utiliza datos y estadísticas para identificar a los jugadores que destacan en su juego y que podrían tener un buen desempeño en un entorno profesional. Esto permite a los equipos encontrar y contratar a nuevos talentos de manera más efectiva, lo que puede llevar a un mayor éxito en el ámbito competitivo.')
+
+st.write('\n')
+st.write('\n')
+
+
+st.markdown("<h2 style='text-align: right;'>¿Cómo utilizar League of Scouters?</h2>", unsafe_allow_html=True)
+st.markdown("<h5 style='text-align: right;'>Mi aplicación cuenta con varias secciones. La primera es un ranking de jugadores potenciales que funciona a través de filtros por rol, estadísticas y campeones. La segunda sección es un recomendador de sustitutos que también utiliza filtros por rol y por jugadores profesionales a reemplazar. Por último, la tercera sección es un banco de gráficos donde se pueden visualizar las estadísticas de manera rápida y clara.</h5>", unsafe_allow_html=True)
+
 
 
 
@@ -17,63 +26,20 @@ st.header('¿Qué es League of Scouters?')
     
     
     
-    
-    
-col1, col2, col3 = st.columns(3)
 
-# Agregar una imagen a cada columna
-with col1:
-    st.markdown("[![Imagen 1](https://www.pngegg.com/es/png-ccvkn)](http://localhost:8501/Mejores_jugadores)")
-with col2:
-    st.markdown("[![Imagen 2](https://static.wikia.nocookie.net/leagueoflegends/images/8/84/Let%27s_Do_This_Emote.png/revision/latest?cb=20171120231623)](http://localhost:8501/Sustitutos)")
-with col3:
-    st.markdown("[![Imagen 3](https://static.wikia.nocookie.net/leagueoflegends/images/e/e4/Catch_Me_If_You_Can%21_Emote.png/revision/latest?cb=20171120233401)](http://localhost:8501/Graficos)")
-    
-    
-
-# Cargar las imágenes localmente
-imagen1 = open("img/streamlit/descarga.jpeg", "rb").read()
-imagen2 = open("img/streamlit/descarga.jpeg", "rb").read()
-imagen3 = open("img/streamlit/descarga.jpeg", "rb").read()
-
-# Crear las tres columnas
-col1, col2, col3 = st.columns(3)
-
-# Agregar una imagen a cada columna y hacer que funcione como botón
-if col1.image(imagen1, use_column_width=True, caption="Imagen 1"):
-    st.write("<a href='http://localhost:8501/Graficos' target='_blank'>Ir a página 1</a>", unsafe_allow_html=True)
-
-if col2.image(imagen2, use_column_width=True, caption="Imagen 2"):
-    st.write("<a href='http://localhost:8501/Graficos' target='_blank'>Ir a página 2</a>", unsafe_allow_html=True)
-
-if col3.image(imagen3, use_column_width=True, caption="Imagen 3"):
-    st.write("<a href='http://localhost:8501/Graficos' target='_blank'>Ir a página 3</a>", unsafe_allow_html=True)
-    
-    
-
-
-# Cargar la imagen localmente
-
-
-# Agregar la imagen como botón y hacer que funcione como enlace
-
+st.write('\n')
+st.write('\n')
 
 
 col4, col5, col6 = st.columns(3)
 
 # Agregar una imagen a cada columna
 with col4:
-    if st.button("Ir a la página web1"):
-        st.markdown("<a href='http://localhost:8501/Graficos'>", unsafe_allow_html=True)
-        st.image(imagen1, use_column_width=True)
-        st.markdown("</a>", unsafe_allow_html=True)
+    if st.button("Mejores jugadores"):
+        webbrowser.open_new_tab('http://localhost:8501/Mejores_jugadores')
 with col5:
-    if st.button("Ir a la página web2"):
-        st.markdown("<a href='http://localhost:8501/Graficos'>", unsafe_allow_html=True)
-        st.image(imagen2, use_column_width=True)
-        st.markdown("</a>", unsafe_allow_html=True)
+    if st.button("Reemplazos"):
+        webbrowser.open_new_tab('http://localhost:8501/Buscador_de_reemplazos')
 with col6:    
-    if st.button("Ir a la página web3"):
-        st.markdown("<a href='http://localhost:8501/Graficos'>", unsafe_allow_html=True)
-        st.image(imagen3, use_column_width=True)
-        st.markdown("</a>", unsafe_allow_html=True)
+    if st.button("Banco de gráficos"):
+        webbrowser.open_new_tab('http://localhost:8501/Graficos')

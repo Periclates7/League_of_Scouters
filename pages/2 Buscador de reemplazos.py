@@ -7,6 +7,10 @@ import urllib.request
 
 
 
+
+st.image("img/banner.png", use_column_width=True)
+
+
 dataframes_por_rol = {
                       'Top': pd.read_csv('data/cuadro_mando/top_stats_score.csv'),
                       'Jungler': pd.read_csv('data/cuadro_mando/jun_stats_score.csv'),
@@ -16,7 +20,7 @@ dataframes_por_rol = {
                       }        
 
 
-st.subheader('Sistema de sustituciones')
+st.header('Buscador de reemplazos')
 
 rol_2, invocador = st.columns(2)
 
