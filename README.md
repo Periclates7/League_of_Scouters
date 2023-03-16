@@ -4,7 +4,7 @@
   
 El presente proyecto es el proyecto final que se ha entregado en marzo de 2023 a la finalización del Bootcamp en Data Analytics cursado en la escuela tecnológica Ironhack.
   
-El proyecto se basa en la extracción, transformación y carga de datos relacionados con datos de jugadores del videojuego League of Legends, para de esta manera crear un sistema automatizado de *scouting* mediante el cual seamos capaces de identificar aquellos jugadores no profesionales que tengan potencial para ser fichados por equipos profesionales de League of Legends.
+League of Scouters es una plataforma diseñada para ayudar a los equipos profesionales de League of Legends a encontrar jugadores con potencial para fichar. La plataforma utiliza datos y estadísticas para identificar a los jugadores que destacan en su juego y que podrían tener un buen desempeño en un entorno profesional. Esto permite a los equipos encontrar y contratar a nuevos talentos de manera más efectiva, lo que puede llevar a un mayor éxito en el ámbito competitivo.
   
 ## 🎯 OBJETIVOS DEL PROYECTO 
   
