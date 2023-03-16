@@ -7,6 +7,9 @@ import urllib.request
 
 
 
+img = Image.open("img/logo.png")
+st.sidebar.image(img, caption='Título de la imagen')
+
 filtro_grafico_player = st.sidebar.selectbox('Gráfico de jugadores', ['Selecciona un rol','Top', 'Jungle', 'Mid', 'AD Carry', 'Support'])
 
 filtro_grafico_champ = st.sidebar.selectbox('Gráfico de campeones', ['Selecciona un rol','Top', 'Jungle', 'Mid', 'AD Carry', 'Support'])
