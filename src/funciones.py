@@ -81,16 +81,16 @@ def scrapeo(url):
     
     kda = [driver.find_elements(By.CLASS_NAME, 'kda')[i].text for i in range(len(driver.find_elements(By.CLASS_NAME, 'kda')))]
     
-    count = 0
+    contador = 0
     i = len(kda) - 1
-    while count < 8 and i >= 0:
+    while contador < 8 and i >= 0:
         if kda[i] != '':
-            count += 1
+            contador += 1
         i -= 1
 
-    if count == 8:
-        result = kda[i+1:]
-        result = result[:8]
+    if contador == 8:
+        resultado = kda[i+1:]
+        resultado = result[:8]
     
     
     kda = [e.split(' / ') for e in result]

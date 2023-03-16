@@ -5,7 +5,7 @@ from PIL import Image
 import webbrowser
 import urllib.request
 
-
+st.set_page_config(page_icon = '🎮', page_title = 'LoS - Mejores invocadores')
 
 st.image("img/banner.png", use_column_width=True)
 

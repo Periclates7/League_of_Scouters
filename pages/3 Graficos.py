@@ -6,6 +6,9 @@ import webbrowser
 import urllib.request
 import altair as alt
 
+
+st.set_page_config(page_title="LoS - Banco de gráficos", page_icon = '🎮')
+
 # Carga dfs
 top = pd.read_csv('data/visualizacion/top_ss.csv')
 jun = pd.read_csv('data/visualizacion/jun_ss.csv')

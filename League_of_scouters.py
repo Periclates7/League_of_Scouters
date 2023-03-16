@@ -5,6 +5,9 @@ from PIL import Image
 import webbrowser
 import urllib.request
 
+
+st.set_page_config(page_icon = '🎮', page_title = 'League of Scouters')
+
 st.image("img/banner.png", use_column_width=True)
 
 #st.title('LEAGUE OF SCOUTERS')
