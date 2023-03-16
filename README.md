@@ -16,10 +16,10 @@ League of Scouters es una plataforma diseñada para ayudar a los equipos profesi
     - Limpieza de valores nulos
     - Eliminación de duplicados
     - Transformación de diferentes conjuntos de datos
-    - Librerías utilizadas: Pandas, Numpy, Selenium, Scipy, Pylab, Seaborn, Streamlit.
+    - Librerías utilizadas: Pandas, Numpy, Selenium, Scipy, Altair, Pylab, Seaborn, Streamlit.
 3. Analizar, Adecuar y etiquetar los datos.
 4. Calcular y comparar similitudes entre jugadores profesionales y fugadores con potencial.
-5. Visualizar los datos a través de Tableau.
+5. Visualizar los datos.
 6. Realizar un cuadro de mando intuitivo y operativo a través de Streamlit.
   
 ## ⛏ EXTRACCIÓN Y LIMPIEZA DE LOS DATOS
