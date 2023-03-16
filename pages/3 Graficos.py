@@ -19,6 +19,14 @@ conteo_mid = pd.read_csv('data/visualizacion/conteo_champs/conteo_champs_mid.csv
 conteo_adc = pd.read_csv('data/visualizacion/conteo_champs/conteo_champs_adc.csv')
 conteo_supp = pd.read_csv('data/visualizacion/conteo_champs/conteo_champs_supp.csv')
 
+top_champ_winrate = ('data/visualizacion/winrate_champ/top_winrate_champ.csv')
+jun_champ_winrate = ('data/visualizacion/winrate_champ/jun_winrate_champ.csv')
+mid_champ_winrate = ('data/visualizacion/winrate_champ/mid_winrate_champ.csv')
+adc_champ_winrate = ('data/visualizacion/winrate_champ/adc_winrate_champ.csv')
+supp_champ_winrate = ('data/visualizacion/winrate_champ/supp_winrate_champ.csv')
+
+
+
 # Banner
 st.image("img/banner.png", use_column_width=True)
 
@@ -28,8 +36,10 @@ filtro_grafico_score = st.sidebar.selectbox('Gráfico de jugadores por score', [
 
 filtro_grafico_champ = st.sidebar.selectbox('Gráfico de campeones', ['Selecciona un rol','Top', 'Jungle', 'Mid', 'AD Carry', 'Support'])
 
+filtro_grafico_champ_winrate = st.sidebar.selectbox('Gráfico winrate campeones', ['Selecciona un rol','Top', 'Jungle', 'Mid', 'AD Carry', 'Support'])
 
-# Gráficos
+
+# Gráficos player score
 
 top_score = alt.Chart(top).mark_bar(color = 'red').encode(
     x='nombre_invocador',
@@ -51,7 +61,7 @@ supp_score = alt.Chart(supp).mark_bar(color = 'red').encode(
     x='nombre_invocador',
     y='score').interactive()
 
-
+# Gráficos champs más jugados
 
 champs_top = alt.Chart(conteo_top).mark_bar(color = 'red').encode(
     x='Champion',
@@ -74,7 +84,31 @@ champs_supp = alt.Chart(conteo_supp).mark_bar(color = 'red').encode(
     y='Participaciones').interactive()
 
 
-# Despliegue de gráficos
+# Gráficos champs winrate
+
+top_champ_winrate_g = alt.Chart(top_champ_winrate).mark_bar(color = 'red').encode(
+    x='Champion',
+    y='Winrate').interactive()
+
+jun_champ_winrate_g = alt.Chart(jun_champ_winrate).mark_bar(color = 'red').encode(
+    x='Champion',
+    y='Winrate').interactive()
+
+mid_champ_winrate_g = alt.Chart(mid_champ_winrate).mark_bar(color = 'red').encode(
+    x='Champion',
+    y='Winrate').interactive()
+
+adc_champ_winrate_g = alt.Chart(adc_champ_winrate).mark_bar(color = 'red').encode(
+    x='Champion',
+    y='Winrate').interactive()
+
+supp_champ_winrate_g = alt.Chart(supp_champ_winrate).mark_bar(color = 'red').encode(
+    x='Champion',
+    y='Winrate').interactive()
+
+
+# Despliegue de gráficos mejores jugadores
+
 if filtro_grafico_score == 'Top':    
     st.caption('# Mejores jugadores en Top')
     st.altair_chart(top_score)
@@ -89,14 +123,14 @@ elif filtro_grafico_score == 'Mid':
 
 elif filtro_grafico_score == 'AD Carry':
     st.caption('# Mejores jugadores en ADC')
-    st.altair_chart(acd_score)
+    st.altair_chart(adc_score)
 
 elif filtro_grafico_score == 'Support':
     st.caption('# Mejores jugadores en Support')
     st.altair_chart(supp_score)
         
 
-# Selector de gráficos campeones más jugados por rol
+# Despliegue de gráficos campeones más jugados por rol
         
 if filtro_grafico_champ == 'Top':
     st.caption(f'# Campeones más usados en {filtro_grafico_champ}')
@@ -118,3 +152,26 @@ elif filtro_grafico_champ == 'Support':
     st.caption(f'# Campeones más usados en {filtro_grafico_champ}')
     st.altair_chart(champs_supp)
 
+
+# Despliegue de gráficos winrate campeones    
+
+if filtro_grafico_champ_winrate == 'Top':
+    st.caption(f'# Winrate campeones en {filtro_grafico_champ}')
+    st.altair_chart(top_champ_winrate_g)      
+
+elif filtro_grafico_champ_winrate == 'Jungle':
+    st.caption(f'# Winrate campeones en {filtro_grafico_champ}')
+    st.altair_chart(jun_champ_winrate_g)
+    
+elif filtro_grafico_champ_winrate == 'Mid':
+    st.caption(f'# Winrate campeones en {filtro_grafico_champ}')
+    st.altair_chart(mid_champ_winrate_g)
+
+elif filtro_grafico_champ_winrate == 'AD Carry':
+    st.caption(f'# Winrate campeones en {filtro_grafico_champ}')
+    st.altair_chart(adc_champ_winrate_g)
+
+elif filtro_grafico_champ_winrate == 'Support':
+    st.caption(f'# Winrate campeones en {filtro_grafico_champ}')
+    st.altair_chart(supp_champ_winrate_g)
+    

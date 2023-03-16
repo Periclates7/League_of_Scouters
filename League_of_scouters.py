@@ -7,16 +7,29 @@ import urllib.request
 
 st.image("img/banner.png", use_column_width=True)
 
-st.title('LEAGUE OF SCOUTERS')
-st.header('¿Qué es League of Scouters?')
-st.write('##### League of Scouters es una plataforma diseñada para ayudar a los equipos profesionales de League of Legends a encontrar jugadores con potencial para fichar. La plataforma utiliza datos y estadísticas para identificar a los jugadores que destacan en su juego y que podrían tener un buen desempeño en un entorno profesional. Esto permite a los equipos encontrar y contratar a nuevos talentos de manera más efectiva, lo que puede llevar a un mayor éxito en el ámbito competitivo.')
+#st.title('LEAGUE OF SCOUTERS')
+col_1, col_2 = st.columns(2)
 
+with col_1:    
+    st.header('¿Qué es League of Scouters?')
+    st.write('###### League of Scouters es una plataforma diseñada para ayudar a los equipos profesionales de League of Legends a encontrar jugadores con potencial para fichar. La plataforma utiliza datos y estadísticas para identificar a los jugadores que destacan en su juego y que podrían tener un buen desempeño en un entorno profesional. Esto permite a los equipos encontrar y contratar a nuevos talentos de manera más efectiva, lo que puede llevar a un mayor éxito en el ámbito competitivo.')
+
+with col_2:
+    st.image("img/streamlit/fiora.png", use_column_width=True)
+    
 st.write('\n')
 st.write('\n')
 
 
-st.markdown("<h2 style='text-align: right;'>¿Cómo utilizar League of Scouters?</h2>", unsafe_allow_html=True)
-st.markdown("<h5 style='text-align: right;'>Mi aplicación cuenta con varias secciones. La primera es un ranking de jugadores potenciales que funciona a través de filtros por rol, estadísticas y campeones. La segunda sección es un recomendador de sustitutos que también utiliza filtros por rol y por jugadores profesionales a reemplazar. Por último, la tercera sección es un banco de gráficos donde se pueden visualizar las estadísticas de manera rápida y clara.</h5>", unsafe_allow_html=True)
+
+col_3, col_4 = st.columns(2)
+
+with col_3:
+    st.image("img/streamlit/blitz.png", use_column_width=True)
+
+with col_4:    
+    st.markdown("<h2 style='text-align: right;'>¿Cómo utilizar League of Scouters?</h2>", unsafe_allow_html=True)
+    st.markdown("<h6 style='text-align: right;'>Mi aplicación cuenta con varias secciones. La primera es un ranking de jugadores potenciales que funciona a través de filtros por rol, estadísticas y campeones. La segunda sección es un recomendador de sustitutos que también utiliza filtros por rol y por jugadores profesionales a reemplazar. Por último, la tercera sección es un banco de gráficos donde se pueden visualizar las estadísticas de manera rápida y clara.</h6>", unsafe_allow_html=True)
 
 
 
