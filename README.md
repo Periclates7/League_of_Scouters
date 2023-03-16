@@ -1,4 +1,4 @@
-![Cabecera](https://github.com/Periclates7/League_of_Scouters/blob/main/img/cabecera_app.png)
+![Banner](https://github.com/Periclates7/League_of_Scouters/blob/main/img/banner.png)
   
 # LEAGUE OF SCOUTERS 🏆🎮
   
