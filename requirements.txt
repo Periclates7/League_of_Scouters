@@ -1,7 +1,4 @@
-matplotlib 
-matplotlib-inline 
 numpy 
-pandas 
-scipy 
+pandas  
 streamlit
 altair
