@@ -1,0 +1,12 @@
+matplotlib 
+matplotlib-inline 
+numpy 
+pandas 
+plotly
+scipy 
+streamlit
+pylab
+webbrowser
+urllib.request
+PIL
+altair
