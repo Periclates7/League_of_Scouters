@@ -4,8 +4,6 @@ numpy
 pandas 
 scipy 
 streamlit
-pylab-sdk
-webbrowser
 urllib.request
 PIL
 altair
