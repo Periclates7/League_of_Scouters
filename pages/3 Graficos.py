@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import pylab as plt
 from PIL import Image
 import webbrowser
 import urllib.request
