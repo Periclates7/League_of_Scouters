@@ -128,7 +128,7 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-*.csv
+
 *.xls
 borradores.ipynb
 borradores2.ipynb
